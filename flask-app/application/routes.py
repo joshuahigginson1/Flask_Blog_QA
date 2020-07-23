@@ -15,6 +15,19 @@ from flask import render_template
 # import the app object from the ./application/__init__.py
 from application import app
 
+# Define Variables ------------------------------------------------------------------------
+
+
+blog_data = [{
+    "name": {"first": "John", "last": "Doe"},
+    "title": "First Post",
+    "content": "This is some blog data for Flask lectures"
+}, {
+    "name": {"first": "Jane", "last": "Doe"},
+    "title": "Second Post",
+    "content": "This is even more blog data for Flask lectures"
+}]
+
 
 # Routes ---------------------------------------------------------------------------------
 
@@ -22,7 +35,7 @@ from application import app
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('home.html', title='Home')
+    return render_template('home.html', title='Home', posts=blog_data)
 
 
 @app.route('/about')
