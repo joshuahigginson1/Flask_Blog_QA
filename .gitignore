@@ -1,6 +1,5 @@
 .DS_Store
 /pycache/
 *.pyc
-/venv/
-/venv/*
+*/venv/*
 
