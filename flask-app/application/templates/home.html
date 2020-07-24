@@ -1,17 +1,15 @@
 {% extends "layout.html" %}
 
-    {% block body_content %}
+{% block body_content %}
 
-    <p1> Welcome to the home of my first web app!</p1>
+    <h1>Home Page</h1>
 
-    {% for post in posts %}
-        <div>
-            <h3>{{ post.title }}</h3>
-            <p><b> - First name:</b>{{ post.name.first }}</p>
-            <p><b> - Last name:</b>{{ post.name.last }}</p>
-            <p> -- {{ post.content }}</p>
-        </div>
+        <p>Welcome to this web app!</p>
 
-    {% endfor %}
+            <div>
 
-{% endblock %}
+                <h3>{{ post.title }}</h3>
+
+            </div>
+
+{% endblock body_content %}
