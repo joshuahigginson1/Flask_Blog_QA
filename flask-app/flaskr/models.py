@@ -6,7 +6,7 @@ Dev Notes:This file is used define the schema for our blog post database.
 
 # Imports --------------------------------------------------------------------------------
 
-from application import db  # import our database instance, stored as 'variable' in our __init__.py file.
+from flaskr import db  # import our database instance, stored as 'variable' in our __init__.py file.
 
 
 # Classes --------------------------------------------------------------------------------

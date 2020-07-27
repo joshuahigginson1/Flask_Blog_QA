@@ -5,7 +5,8 @@
       <entry url="file://$PROJECT_DIR$">
         <entryData>
           <resourceRoots>
-            <path value="file://$PROJECT_DIR$/flask-app/application" />
+            <path value="file://$PROJECT_DIR$/flask-app/flaskr/application" />
+            <path value="file://$PROJECT_DIR$/flask-app/flaskr" />
           </resourceRoots>
         </entryData>
       </entry>

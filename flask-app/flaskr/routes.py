@@ -13,10 +13,11 @@ Dev Notes:
 from flask import render_template
 
 # import the app object from the ./application/__init__.py
-from application import app
+from flask import current_app as app
 
-# import the Posts class from the .models.py file.
-from application.models import Posts
+
+# import the Posts class from our models.py file.
+# from flaskr import Posts
 
 # Define Variables ------------------------------------------------------------------------
 
@@ -27,8 +28,9 @@ from application.models import Posts
 @app.route('/')
 @app.route('/home')
 def home():
-    postData = Posts.query.first()
-    return render_template('home.html', title='Home', post=postData)
+    #    postData = Posts.query.first()
+    #   return render_template('home.html', title='Home', post=postData)
+    return render_template('home.html', title='Home')
 
 
 @app.route('/about')
