@@ -44,7 +44,6 @@ def create_app():  # Initialises the core application.
         from .blog import blog
         from .homepage import homepage
         from . import routes
-        from . import forms
 
         # Next, we register Blueprints.
         # Blueprints are "registered" by calling register_blueprint() on our app object.

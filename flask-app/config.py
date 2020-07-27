@@ -4,6 +4,7 @@ class Config(object):
     DEBUG = False
     TESTING = False
     FLASK_APP = 'wsgi.py'
+    SECRET_KEY = 'alligator 3'
 
     # Flask Config from Environment Variables
 

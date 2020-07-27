@@ -11,7 +11,7 @@ from wtforms.validators import DataRequired, Length, Email  # Import our validat
 
 # Classes --------------------------------------------------------------------------------
 
-class PostForm(FlaskForm):
+class BlogForm(FlaskForm):
     first_name = StringField('First Name', [
         Length(min=2, max=30),
         DataRequired()])
@@ -22,6 +22,10 @@ class PostForm(FlaskForm):
 
     title = StringField('Title', [
         Length(min=2, max=100),
+        DataRequired()])
+
+    content = StringField('Content', [
+        Length(min=2, max=500),
         DataRequired()])
 
     submit = SubmitField('Continue')
