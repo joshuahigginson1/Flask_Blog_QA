@@ -25,5 +25,5 @@ def blog():
         'blog.html',
         title='Blog Page',
         subtitle='Blueprint for code related to our blog specifically.',
-        template='blog',
+        template='blog.html'
     )

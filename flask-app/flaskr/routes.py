@@ -24,14 +24,6 @@ from flask import current_app as app
 
 # Routes ---------------------------------------------------------------------------------
 
-# define routes for / & /home, this function will be called when these are accessed
-@app.route('/')
-@app.route('/home')
-def home():
-    #    postData = Posts.query.first()
-    #   return render_template('home.html', title='Home', post=postData)
-    return render_template('home.html', title='Home')
-
 
 @app.route('/about')
 def about():

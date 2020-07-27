@@ -41,7 +41,8 @@ def create_app():  # Initialises the core application.
         # from .bp_folder2 import blueprint_filename2
         # from .bp_folder3 import blueprint_filename3
 
-        from flaskr.blog import blog
+        from .blog import blog
+        from .homepage import homepage
         from . import routes
         from . import forms
 
@@ -52,6 +53,7 @@ def create_app():  # Initialises the core application.
         # app.register_blueprint(blueprint_module_name.blueprint_name2)
         # app.register_blueprint(blueprint_module_name.blueprint_name3)
         app.register_blueprint(blog.blog_bp)
+        app.register_blueprint(homepage.homepage_bp)
 
         # If we have a database, we need to run the command .create_all() to our database schema.
 

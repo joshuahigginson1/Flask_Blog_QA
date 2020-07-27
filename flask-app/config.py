@@ -3,6 +3,12 @@ class Config(object):
 
     DEBUG = False
     TESTING = False
+    FLASK_APP = 'wsgi.py'
+
+    # Flask Config from Environment Variables
+
+    # FLASK_ENV = environ.get('FLASK_ENV')
+    # SECRET_KEY = environ.get('SECRET_KEY')
 
     # SQL-Alchemy Database Config
 
@@ -10,6 +16,10 @@ class Config(object):
     SQLALCHEMY_ECHO = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+    # Static Assets Config
+
+    STATIC_FOLDER = 'static'
+    TEMPLATES_FOLDER = 'templates'
 
 class ProductionConfig(Config):
     pass
