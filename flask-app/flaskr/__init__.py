@@ -6,6 +6,7 @@
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 
 # Globally Accessible Libraries ---------------------------------------------------------
 
@@ -13,7 +14,7 @@ from flask_sqlalchemy import SQLAlchemy
 # However, we can't actually use them until after they have been initialised by our app.
 
 db = SQLAlchemy()
-
+login_manager = LoginManager()
 
 # Functions -----------------------------------------------------------------------------
 
@@ -27,6 +28,7 @@ def create_app():  # Initialises the core application.
 
     # Initialise our Globally Accessible Libraries
     db.init_app(app)
+    login_manager.init_app(app)
 
     # Any part of our app which is not imported, initialized, or registered within the with app.app_context(): block...
     # ... effectively does not exist. This block is the lifeblood of our Flask app.
@@ -43,6 +45,7 @@ def create_app():  # Initialises the core application.
 
         from .blog import blog
         from .homepage import homepage
+        from .auth import auth
         from . import routes
 
         # Next, we register Blueprints.
@@ -53,6 +56,7 @@ def create_app():  # Initialises the core application.
         # app.register_blueprint(blueprint_module_name.blueprint_name3)
         app.register_blueprint(blog.blog_bp)
         app.register_blueprint(homepage.homepage_bp)
+        app.register_blueprint(auth.auth_bp)
 
         # If we have a database, we need to run the command .create_all() to our database schema.
 

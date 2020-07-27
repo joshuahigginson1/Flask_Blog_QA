@@ -28,7 +28,7 @@ def homepage():
         {'name': 'Blog Page', 'url': "url_for('blog_bp.blog')"}
     ]
 
-    return render_template('homepage.html',
+    return render_template('register.html',
                            title='Home Page',
                            subtitle='Homepage Blueprint',
-                           template='homepage.html')
+                           template='register.html')
