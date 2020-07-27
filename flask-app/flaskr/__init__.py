@@ -37,12 +37,13 @@ def create_app():  # Initialises the core application.
         # The first thing we do inside the context is import the base parts of our app.
         # These are any Python files or logic which aren't Blueprints.
 
-        # from .bp_folder1 import blueprint_name1
-        # from .bp_folder2 import blueprint_name2
-        # from .bp_folder3 import blueprint_name3
+        # from .bp_folder1 import blueprint_filename1
+        # from .bp_folder2 import blueprint_filename2
+        # from .bp_folder3 import blueprint_filename3
+
+        from flaskr.blog import blog
         from . import routes
         from . import forms
-        from . import models
 
         # Next, we register Blueprints.
         # Blueprints are "registered" by calling register_blueprint() on our app object.
@@ -50,6 +51,7 @@ def create_app():  # Initialises the core application.
         # app.register_blueprint(blueprint_module_name.blueprint_name1)
         # app.register_blueprint(blueprint_module_name.blueprint_name2)
         # app.register_blueprint(blueprint_module_name.blueprint_name3)
+        app.register_blueprint(blog.blog_bp)
 
         # If we have a database, we need to run the command .create_all() to our database schema.
 
