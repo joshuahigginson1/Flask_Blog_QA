@@ -19,9 +19,18 @@ def load_user(id):
 class Users(db.Model, UserMixin):  # Creates the schema for a 'Users table' within our database...
     # The child class inherits from both db.Model & UserMixin parent classes.
 
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(500), nullable=False, unique=True)
-    password = db.Column(db.String(500), nullable=False)
+    __tablename__ = 'users'
 
-    def __repr__(self):  # Define the self representation of our data.
-        return ''.join(['UserID: ', str(self.id), '\r\n', 'Email: ', self.email])
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(30), nullable=False)
+    last_name = db.Column(db.String(30), nullable=False)
+    email = db.Column(db.String(150), nullable=False, unique=True)
+    password = db.Column(db.String(500), nullable=False)
+    posts = db.relationship('Posts', backref='author', lazy=True)
+
+    def __repr__(self):
+        return ''.join([
+            'User ID: ', str(self.id), '\r\n',
+            'Email: ', self.email, '\r\n',
+            'Name: ', self.first_name, ' ', self.last_name
+        ])

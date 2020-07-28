@@ -4,12 +4,11 @@ This file is a template for creating and configuring a blueprint within Flask.
 
 # Imports --------------------------------------------------------------------------------
 
-from flask import Blueprint, render_template, current_app as app
-from flask_login import login_required
+from flask import Blueprint, render_template, redirect, url_for
+from flask_login import login_required, current_user
 from flaskr import db
 from .forms import BlogForm  # import our BlogForm() method.
 from .models import Posts
-
 
 # Blueprint Configuration -----------------------------------------------------------------
 
@@ -30,14 +29,15 @@ def post_to_blog():
 
     if blog_form.validate_on_submit():
         record = Posts(
-            first_name=blog_form.first_name.data,
-            last_name=blog_form.last_name.data,
             title=blog_form.title.data,
-            content=blog_form.content.data
+            content=blog_form.content.data,
+            author=current_user
         )
 
         db.session.add(record)
         db.session.commit()
+
+        redirect(url_for('blog_bp.blog_view'))
 
     return render_template(
         'post_to_blog.html',
@@ -50,13 +50,12 @@ def post_to_blog():
 
 @blog_bp.route('/blog_view', methods=['GET'])  # Make sure to include post request.
 def blog_view():
-
-    blog_form_data = Posts.query.first()  # Request an SQL query and return this to the blog_form variable.
+    blog_form_data = Posts.query.all()  # Request an SQL query and returns this to the blog_form variable.
 
     return render_template(
         'blog_view.html',
         title='Post to Blog Page',
         subtitle='A page for posting articles to our blog',
         template='blog_view.html',
-        blog_data=blog_form_data
+        blog_posts=blog_form_data
     )

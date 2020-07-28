@@ -12,13 +12,6 @@ from wtforms.validators import DataRequired, Length  # Import our validators.
 # Classes --------------------------------------------------------------------------------
 
 class BlogForm(FlaskForm):
-    first_name = StringField('First Name', [
-        Length(min=2, max=30),
-        DataRequired()])
-
-    last_name = StringField('Last Name', [
-        Length(min=2, max=30),
-        DataRequired()])
 
     title = StringField('Title', [
         Length(min=2, max=100),

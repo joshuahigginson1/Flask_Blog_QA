@@ -1,10 +1,19 @@
 {% extends "layout.html" %}
 {% block body_content %}
-    <h1>View Our Blog</h1>
-    <p>On this page, we should be able to view our blog posts.</p>
+<h1>View Our Blog</h1>
+<p>On this page, we should be able to view our blog posts.</p>
+
+<h1>View Our Blog!</h1>
+
+<p>Welcome to your blog.</p>
+
+{% for post in blog_posts %}
 <div>
-    <h3>{{ blog_data.title }}</h3>
-    <br>
-    <h4>{{ blog_data.content }}</h4>
+    <h3>{{ post.title }}</h3>
+    <span>by <i>{{ post.author.first_name }} {{ post.author.last_name }}</i></span>
+    <span>on the <i>{{ post.date_posted }}</i></span>
+    <p>{{ post.content }}</p>
 </div>
+{% endfor %}
+
 {% endblock body_content %}
