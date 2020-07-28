@@ -4,9 +4,9 @@ A template which lays out the basic syntax for a forms.py file using Flask and  
 
 # Imports --------------------------------------------------------------------------------
 
-from flask_wtf import FlaskForm, RecaptchaField  # Import our Flask Form.
+from flask_wtf import FlaskForm  # Import our Flask Form.
 from wtforms import StringField, SubmitField  # Import our field types.
-from wtforms.validators import DataRequired, Length, Email  # Import our validators.
+from wtforms.validators import DataRequired, Length  # Import our validators.
 
 
 # Classes --------------------------------------------------------------------------------
@@ -28,7 +28,7 @@ class BlogForm(FlaskForm):
         Length(min=2, max=500),
         DataRequired()])
 
-    submit = SubmitField('Continue')
+    submit = SubmitField('Post Article')
 
 # Validator Syntax:
 # VARIABLE = FIELD_TYPE('FIELD_NAME', [ # list of validators.

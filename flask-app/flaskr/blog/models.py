@@ -1,7 +1,5 @@
 """
-
-Dev Notes:This file is used define the schema for our blog post database.
-
+Dev Notes: This file is used define the schema for our blog post database.
 """
 
 # Imports --------------------------------------------------------------------------------

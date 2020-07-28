@@ -7,6 +7,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_bcrypt import Bcrypt
 
 # Globally Accessible Libraries ---------------------------------------------------------
 
@@ -15,6 +16,8 @@ from flask_login import LoginManager
 
 db = SQLAlchemy()
 login_manager = LoginManager()
+bcrypt = Bcrypt()
+
 
 # Functions -----------------------------------------------------------------------------
 
@@ -29,8 +32,9 @@ def create_app():  # Initialises the core application.
     # Initialise our Globally Accessible Libraries
     db.init_app(app)
     login_manager.init_app(app)
+    bcrypt.init_app(app)
 
-    # Any part of our app which is not imported, initialized, or registered within the with app.app_context(): block...
+    # Any part of our app which is not imported, initialised, or registered within the with app.app_context(): block...
     # ... effectively does not exist. This block is the lifeblood of our Flask app.
 
     # App_context() essentially states: 'here are all of the individual pieces of code which my program will run.'
