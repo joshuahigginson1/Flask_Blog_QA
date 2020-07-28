@@ -36,11 +36,11 @@ def register():
         db.session.add(user)  # Add Users object to our session.
         db.session.commit()  # Commit data to our database.
 
-        return redirect(url_for('post'))  # Redirects the user to url/post
+        return redirect(url_for('blog_view'))  # Redirects the user to url/post
 
     return render_template('register.html',  # Returns render template on html GET req.
                            title='Register',
                            subtitle='Code related to our user registration.',
-                           template=register.html,
+                           template='register.html',
                            form=reg_form
                            )

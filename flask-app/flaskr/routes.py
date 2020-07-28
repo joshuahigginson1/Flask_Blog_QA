@@ -28,8 +28,3 @@ from flask import current_app as app
 @app.route('/about')
 def about():
     return render_template('about.html', title='About')
-
-
-@app.route('/register')
-def register():
-    return render_template('register.html', title='Register')

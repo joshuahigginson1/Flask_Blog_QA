@@ -20,15 +20,9 @@ homepage_bp = Blueprint(
 # Routes ----------------------------------------------------------------------------------
 @homepage_bp.route('/', methods=['GET'])
 @homepage_bp.route('/home', methods=['GET'])
-def homepage():
-    nav_bar = [
-        {'name': 'Home Page', 'url': "url_for('homepage_bp.homepage')"},
-        {'name': 'About Page', 'url': "url_for('about')"},
-        {'name': 'Register Page', 'url': "url_for('register')"},
-        {'name': 'Blog Page', 'url': "url_for('blog_bp.blog')"}
-    ]
 
-    return render_template('register.html',
+def homepage():
+    return render_template('homepage.html',
                            title='Home Page',
-                           subtitle='Homepage Blueprint',
-                           template='register.html')
+                           subtitle='Homepage of our application',
+                           template='homepage.html')

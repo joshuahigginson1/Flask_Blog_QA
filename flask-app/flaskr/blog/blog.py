@@ -33,8 +33,8 @@ def post_to_blog():
             content=blog_form.content.data
         )
 
-    db.session.add(record)
-    db.session.commit()
+        db.session.add(record)
+        db.session.commit()
 
     return render_template(
         'post_to_blog.html',
