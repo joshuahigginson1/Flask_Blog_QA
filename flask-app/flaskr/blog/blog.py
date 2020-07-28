@@ -5,9 +5,11 @@ This file is a template for creating and configuring a blueprint within Flask.
 # Imports --------------------------------------------------------------------------------
 
 from flask import Blueprint, render_template, current_app as app
+from flask_login import login_required
 from flaskr import db
 from .forms import BlogForm  # import our BlogForm() method.
 from .models import Posts
+
 
 # Blueprint Configuration -----------------------------------------------------------------
 
@@ -22,6 +24,7 @@ blog_bp = Blueprint(
 # Routes ----------------------------------------------------------------------------------
 
 @blog_bp.route('/post_to_blog', methods=['GET', 'POST'])  # Make sure to include post request.
+@login_required
 def post_to_blog():
     blog_form = BlogForm()  # Instantiate a NewForm() object, and assign this to a new variable.
 

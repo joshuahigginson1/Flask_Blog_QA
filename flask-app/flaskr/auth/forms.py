@@ -5,8 +5,8 @@ A template which lays out the basic syntax for a forms.py file using Flask and W
 # Imports --------------------------------------------------------------------------------
 
 from flask_wtf import FlaskForm, RecaptchaField  # Import our Flask Form.
-from wtforms import StringField, SubmitField, PasswordField  # Import our field types.
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError  # Import our validators.
+from wtforms import StringField, SubmitField, PasswordField, BooleanField  # Import our field types.
+from wtforms.validators import DataRequired, Email, EqualTo, ValidationError  # Import our validators.
 from .models import Users
 
 
@@ -26,3 +26,13 @@ class RegistrationForm(FlaskForm):
 
         if user:
             raise ValidationError('Email already in use')
+
+
+class LoginForm(FlaskForm):
+    email = StringField('Email', [DataRequired(), Email()])
+
+    password = PasswordField('Password', [DataRequired()])
+
+    remember = BooleanField('Remember Me')
+
+    submit = SubmitField('Login')

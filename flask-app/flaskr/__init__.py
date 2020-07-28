@@ -6,7 +6,7 @@
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-# from flask_login import LoginManager
+from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
 
 # Globally Accessible Libraries ---------------------------------------------------------
@@ -15,7 +15,7 @@ from flask_bcrypt import Bcrypt
 # However, we can't actually use them until after they have been initialised by our app.
 
 db = SQLAlchemy()
-# login_manager = LoginManager()
+login_manager = LoginManager()
 bcrypt = Bcrypt()
 
 
@@ -31,7 +31,7 @@ def create_app():  # Initialises the core application.
 
     # Initialise our Globally Accessible Libraries
     db.init_app(app)
-    # login_manager.init_app(app)
+    login_manager.init_app(app)
     bcrypt.init_app(app)
 
     # Any part of our app which is not imported, initialised, or registered within the with app.app_context(): block...
