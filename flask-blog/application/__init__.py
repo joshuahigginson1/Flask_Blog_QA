@@ -5,11 +5,10 @@
 # Imports --------------------------------------------------------------------------------
 
 from flask import Flask
-
-
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
+from os import getenv
 
 # Globally Accessible Libraries ---------------------------------------------------------
 
@@ -20,6 +19,7 @@ db = SQLAlchemy()
 login_manager = LoginManager()
 bcrypt = Bcrypt()
 
+
 # Functions -----------------------------------------------------------------------------
 
 def create_app():  # Initialises the core application.
@@ -27,15 +27,16 @@ def create_app():  # Initialises the core application.
     # Create our Flask app object.
     app = Flask(__name__, instance_relative_config=False)
 
-    # State that it should be configured using a class called Config, in a file named Config.py.
-    app.config.from_object('config.Config')
+    # State that it should be configured using a class called Config, in a file named config.py.
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = getenv('DATABASE_URI')
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SECRET_KEY'] = getenv('SECRET_KEY')
 
     # Initialise our Globally Accessible Libraries
     db.init_app(app)
     login_manager.init_app(app)
     bcrypt.init_app(app)
-
-    login_manager.login_view = 'login'
 
     # Any part of our app which is not imported, initialised, or registered within the with app.app_context(): block...
     # ... effectively does not exist. This block is the lifeblood of our Flask app.
@@ -43,25 +44,24 @@ def create_app():  # Initialises the core application.
     # App_context() essentially states: 'here are all of the individual pieces of code which my program will run.'
 
     with app.app_context():
-    # The first thing we do inside the context is import the base parts of our app.
-    # These are any Python files or logic which aren't Blueprints.
+        # The first thing we do inside the context is import the base parts of our app.
+        # These are any Python files or logic which aren't Blueprints.
 
-    # from .bp_folder1 import blueprint_name1
-    # from .bp_folder2 import blueprint_name2
-    # from .bp_folder3 import blueprint_name3
+        from application import forms, models, routes
+        # from .bp_folder2 import blueprint_name2
+        # from .bp_folder3 import blueprint_name3
 
-    from flaskr import routes
+        # Next, we register Blueprints.
+        # Blueprints are "registered" by calling register_blueprint() on our app object.
 
-    # Next, we register Blueprints.
-    # Blueprints are "registered" by calling register_blueprint() on our app object.
+        # app.register_blueprint(blueprint_module_name.blueprint_name1)
+        # app.register_blueprint(blueprint_module_name.blueprint_name2)
+        # app.register_blueprint(blueprint_module_name.blueprint_name3)
 
-    # app.register_blueprint(blueprint_module_name.blueprint_name1)
-    # app.register_blueprint(blueprint_module_name.blueprint_name2)
-    # app.register_blueprint(blueprint_module_name.blueprint_name3)        
+        # If we have a database, we need to run the command .create_all() to our database schema.
 
-    # If we have a database, we need to run the command .create_all() to our database schema.
-
-    db.create_all()
+        db.drop_all()
+        db.create_all()
 
     return app
 

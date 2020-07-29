@@ -9,6 +9,7 @@
             <path value="file://$PROJECT_DIR$/flask-app/flaskr" />
             <path value="file://$PROJECT_DIR$/flask-app/flaskr/blog" />
             <path value="file://$PROJECT_DIR$/flask-blog/flaskr" />
+            <path value="file://$PROJECT_DIR$/flask-blog/application" />
           </resourceRoots>
         </entryData>
       </entry>

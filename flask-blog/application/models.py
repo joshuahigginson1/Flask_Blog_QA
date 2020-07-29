@@ -1,6 +1,11 @@
-from flaskr import db, login_manager
+from application import db, login_manager
 from flask_login import UserMixin
 from datetime import datetime
+
+
+@login_manager.user_loader
+def load_user(id):
+    return Users.query.get(int(id))
 
 
 class Posts(db.Model):
@@ -28,15 +33,6 @@ class Users(db.Model, UserMixin):
 
     def __repr__(self):
         return ''.join(['UserID: ', str(self.id), '\r\n',
-        'Email: ', self.email], '\r\n',
-        'Name: ', self.first_name, ' ', self.last_name
-        )
-
-
-
-
-
-
-@login_manager.user_loader
-def load_user(id):
-    return Users.query.get(int(id))
+                        'Email: ', self.email], '\r\n',
+                       'Name: ', self.first_name, ' ', self.last_name
+                       )
