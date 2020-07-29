@@ -1,5 +1,5 @@
 """
-Dev Notes: So our application factory returns our Flask app within the variable 'app'.
+Dev Notes: So our flaskr factory returns our Flask app within the variable 'app'.
 However, where do we return app to, exactly? That's where the mysterious wsgi.py file comes into play.
 
 WSGI is the Web Server Gateway Interface. WSGI is a Python standard described in detail in PEP 3333.

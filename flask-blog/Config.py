@@ -8,11 +8,10 @@ from dotenv import load_dotenv
 basedir = path.abspath(path.dirname(__file__))
 load_dotenv(path.join(basedir, '.env'))
 
+
 # declare classes ----------------------
 
-
 class Config(object):
-
     # General Config
 
     DEBUG = False
@@ -21,12 +20,12 @@ class Config(object):
 
     # Flask Config from Environment Variables
 
-    # FLASK_ENV = environ.get('FLASK_ENV')
-    SECRET_KEY = environ.get('SECRET_KEY')
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+    # FLASK_ENV = os.environ.get('FLASK_ENV')
 
     # SQL-Alchemy Database Config
 
-    SQLALCHEMY_DATABASE_URI = environ.get('DATABASE_URI')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI')
     SQLALCHEMY_ECHO = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
@@ -37,7 +36,9 @@ class Config(object):
 
 
 class ProductionConfig(Config):
-    pass
+
+
+# DATABASE_URI = 'mysql://user@localhost/foo'
 
 
 class DevelopmentConfig(Config):
